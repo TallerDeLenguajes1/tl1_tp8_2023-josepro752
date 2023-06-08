@@ -15,11 +15,17 @@ public class Tarea {
         Descripcion = descrip;
         Duracion = dura;
     }
-    public Tarea() {}
+    public Tarea() {
+        TareaID = -1;
+    }
     // METODOS
     public void MostrarTarea() {
-        Console.WriteLine(" ~ ID: "+TareaID);
-        Console.WriteLine(" ~ Descripcion: "+Descripcion);
-        Console.WriteLine(" ~ Duracion: "+Duracion);
+        if (TareaID != -1) {
+            Console.WriteLine(" ~ ID: "+TareaID);
+            Console.WriteLine(" ~ Descripcion: "+Descripcion);
+            Console.WriteLine(" ~ Duracion: "+Duracion);
+        } else {
+            Console.WriteLine("No se encontro la tarea");
+        }
     }
 }
