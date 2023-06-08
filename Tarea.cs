@@ -10,11 +10,12 @@ public class Tarea {
     public string? Descripcion { get => descripcion; set => descripcion = value; }
     public int Duracion { get => duracion; set => duracion = value; }
     // CONSTRUCTOR
-    public Tarea (int id, string descrip, int dura) {
+    public Tarea(int id, string descrip, int dura) {
         TareaID = id;
         Descripcion = descrip;
         Duracion = dura;
     }
+    public Tarea() {}
     // METODOS
     public void MostrarTarea() {
         Console.WriteLine(" ~ ID: "+TareaID);

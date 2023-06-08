@@ -30,8 +30,7 @@ for (int i = 0;i < cantidad;i++) {
 
 List<Tarea> Realizadas = new List<Tarea>();
 
-int aux = 0;
-for(int i = 0;i < (cantidad - aux);) {
+for(int i = 0;i < Pendientes.Count();) {
     Pendientes[i].MostrarTarea();
     Console.WriteLine("Se realizo la tarea? (si/no)");
     string? resp = Console.ReadLine();
@@ -41,11 +40,24 @@ for(int i = 0;i < (cantidad - aux);) {
             if (Pendientes.Remove(Pendientes[i])) {
                 Console.WriteLine("Se movio la tarea a 'Realizadas'");
             }
-            aux++;
         } else {
             i++;
         }
     }
 }
 
-
+Tarea BuscarTareaPorDescripcion(string descrip, List<Tarea> lista) {
+    Tarea retorno = new Tarea();
+    foreach(var tarea in lista) {
+        if (tarea.Descripcion != null) {
+            if (tarea.Descripcion.ToLower() == descrip.ToLower()) {
+                retorno = tarea;
+            }
+        }
+    }
+    return retorno;
+}
+string? buscada = Console.ReadLine();
+if (buscada != null) {
+    BuscarTareaPorDescripcion(buscada,Pendientes).MostrarTarea();
+}
