@@ -6,7 +6,7 @@ int ID = 0;
 List<string> LTarea = new List<string>();
 LTarea.Add("Lavar");
 LTarea.Add("Limpiar");
-LTarea.Add("Odernar");
+LTarea.Add("Ordenar");
 LTarea.Add("Reponer");
 LTarea.Add("Contabilizar");
 
@@ -57,8 +57,26 @@ Tarea BuscarTareaPorDescripcion(string descrip, List<Tarea> lista) {
     }
     return retorno;
 }
+
 Console.WriteLine("Ingrese la descripcion de la tarea que desea buscar: ");
 string? buscada = Console.ReadLine();
 if (buscada != null) {
     BuscarTareaPorDescripcion(buscada,Pendientes).MostrarTarea();
+}
+
+CargarHorasEnArchivo("TotalDeHoras.txt",TotalDeHoras(Realizadas));
+
+int TotalDeHoras(List<Tarea> Tareas){
+    int horas = 0;
+    foreach (var tarea in Tareas){
+        horas += tarea.Duracion;
+    }
+    return horas;
+}
+
+void CargarHorasEnArchivo(string ruta, int hora) {
+    using (StreamWriter x = new StreamWriter(ruta)) {
+        x.WriteLine("*****CANTIDAD DE HORAS*****");
+        x.WriteLine("Hora: "+hora);
+    }
 }
